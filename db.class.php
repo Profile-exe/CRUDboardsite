@@ -6,8 +6,8 @@ class DB{
 
     public static function connect() {
         // database server information
-        $db_server = '127.0.0.1';       // 127.0.0.1 로 하면 졸라빠름 왜지 ??
-        $db_dbname = 'opentutorials';
+        $db_server = '127.0.0.1';       // 127.0.0.1 로 하면 localhost 보다 훨씬 빠름 why??
+        $db_dbname = 'crudboardsite';
         $db_username = 'root';
         $db_password = '111111';
 
