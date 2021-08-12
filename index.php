@@ -1,19 +1,28 @@
 <?php
 require_once 'db.class.php';
 
-$sql = 'SELECT * FROM board';
+$sql = "
+    SELECT
+        board_id, board_title, author_name, date_format(created, '%m-%d') as created, view_count 
+    FROM board LEFT JOIN author
+    ON board.author_id = author.author_id
+";
+
 $result = DB::query($sql);
 
 $topic_list = '';
-foreach ($result as $index => $row) {
-    $topic_list .= "
-        <tr>
-            <th scope=\"row\">{$index}</th>
-            <td>{$row['board_title']}</td>
-            <td>{$row['board_content']}</td>
-            <td>{$row['created']}</td>
+if ($result) {  // 글이 존재하는 경우 출력
+    foreach ($result as $index => $row) {
+        $topic_list .= "
+        <tr class=''>
+            <th class='col-1 text-center' scope='row'>{$row['board_id']}</th>
+            <td class='col-8'>{$row['board_title']}</td>
+            <td class='col-1 text-center'>{$row['author_name']}</td>
+            <td class='col-1 text-center'>{$row['created']}</td>
+            <td class='col-1 text-center'>{$row['view_count']}</td>
         </tr>
     ";
+    }
 }
 ?>
 
@@ -32,16 +41,21 @@ foreach ($result as $index => $row) {
 <body>
 <div class="container mt-3 mb-3">
     <header>
-        <h1 class="text-center">게시판</h1>
+        <nav class="navbar mb-3"></nav>
+        <h1 class="text-center">DDING BOARD</h1>
     </header>
     <section>
+        <div class="col-12 d-flex justify-content-end mb-3">
+            <a href="create_board.php" class="btn btn-primary">글쓰기</a>
+        </div>
         <table class="table table-hover">
-            <thead>
+            <thead class="table-light">
                 <tr>
-                    <th scope="col">#</th>
+                    <th class="text-center" scope="col">#</th>
                     <th scope="col">제목</th>
-                    <th scope="col">저자</th>
-                    <th scope="col">만든 날짜</th>
+                    <th class="text-center" scope="col">글쓴이</th>
+                    <th class="text-center" scope="col">작성일</th>
+                    <th class="text-center" scope="col">조회수</th>
                 </tr>
             </thead>
             <tbody>
