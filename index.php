@@ -4,7 +4,7 @@ require_once 'db.class.php';
 $sql = "
     SELECT
         board_id, board_title, author_name, date_format(created, '%m-%d') as created, view_count 
-    FROM board LEFT JOIN author
+    FROM board INNER JOIN author
     ON board.author_id = author.author_id
 ";
 
