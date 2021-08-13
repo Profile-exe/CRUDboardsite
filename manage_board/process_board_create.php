@@ -1,5 +1,5 @@
 <?php
-require_once 'db.class.php';
+require_once '../db.class.php';
 
 $sql = "
     INSERT INTO board
@@ -25,4 +25,4 @@ $result = DB::query($sql, array(
 ));
 
 // redirection
-header('Location: index.php');
+header('Location: ../index.php');

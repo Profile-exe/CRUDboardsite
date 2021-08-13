@@ -1,5 +1,5 @@
 <?php
-require_once 'db.class.php';
+require_once '../db.class.php';
 
 $sql = "SELECT * FROM author";
 $result = DB::query($sql);
@@ -29,7 +29,7 @@ foreach ($result as $index => $row) {
         <h1 class="text-center">DDING BOARD</h1>
     </header>
     <section>
-        <form class="mt-5" action="process_create.php" method="post">
+        <form class="mt-5" action="process_board_create.php" method="post">
             <div class="mb-3">
                 <label for="select_author" class="form-label">작성자</label>
                 <select class="form-select" id="select_author" name="author_id" aria-label="Default select example">
@@ -42,7 +42,7 @@ foreach ($result as $index => $row) {
             </div>
             <div class="mb-3">
                 <label for="input_board_content" class="form-label">글 내용</label>
-                <textarea class="form-control" id="input_board_content" name="board_content" rows="10" placeholder="내용을 입력하세요." required></textarea>
+                <textarea class="form-control" id="input_board_content" name="board_content" style="resize: none;" rows="11" placeholder="내용을 입력하세요." required></textarea>
             </div>
             <div class="mb-3 d-flex justify-content-end">
                 <input type="submit" class="btn btn-primary">
