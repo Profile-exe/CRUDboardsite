@@ -20,7 +20,7 @@ foreach ($result as $index => $row) {
     <title>DDING BOARD</title>
 
     <!--Bootstrap-->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
 </head>
 <body>
 <div class="container mt-3 mb-3">
@@ -46,12 +46,12 @@ foreach ($result as $index => $row) {
             </div>
             <div class="mb-3 d-flex justify-content-end">
                 <input type="submit" class="btn btn-primary">
-                <a href="index.php" class="btn btn-secondary ms-2">취소</a>
+                <a href="../index.php" class="btn btn-secondary ms-2">취소</a>
             </div>
         </form>
     </section>
 </div>
 <!--Bootstrap-->
-<script src="js/bootstrap.min.js"></script>
+<script src="../js/bootstrap.min.js"></script>
 </body>
 </html>

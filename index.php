@@ -46,7 +46,7 @@ if ($result) {  // 글이 존재하는 경우 출력
     </header>
     <section>
         <div class="col-12 d-flex justify-content-end mb-3">
-            <a href="create_board.php" class="btn btn-primary">글쓰기</a>
+            <a href="manage_board/create_board.php" class="btn btn-primary">글쓰기</a>
         </div>
         <table class="table table-hover">
             <thead class="table-light">
