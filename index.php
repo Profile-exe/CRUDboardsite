@@ -6,6 +6,7 @@ $sql = "
         board_id, board_title, author_name, date_format(created, '%m-%d %H:%i') as created, view_count 
     FROM board INNER JOIN author
     ON board.author_id = author.author_id
+    LIMIT 10
 ";
 
 $result = DB::query($sql);
@@ -45,8 +46,9 @@ if ($result) {  // 글이 존재하는 경우 출력
         <h1 class="text-center">DDING BOARD</h1>
     </header>
     <section>
-        <div class="col-12 d-flex justify-content-end mb-3">
-            <a href="manage_board/create_board.php" class="btn btn-primary">글쓰기</a>
+        <div class="col-12 d-flex justify-content-between mb-3">
+            <a href="manage_member/login.php" class="btn btn-secondary">로그인</a>
+            <a href="manage_board/board_create.php" class="btn btn-primary">글쓰기</a>
         </div>
         <table class="table table-hover">
             <thead class="table-light">
