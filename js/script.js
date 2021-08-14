@@ -42,32 +42,9 @@ function change_btn_status(bool, msg = '') {
     const id_form = document.getElementById('id');
     const feedback_list = document.getElementById('input_id').children;
     if (bool) { // true : 사용 가능한 아이디
-        id_form.classList.add('is-valid');
-        id_form.classList.remove('is-invalid');
-        for (let i = 0; i < feedback_list.length; i++) {
-            if (feedback_list[i].classList.contains('valid-feedback'))
-                feedback_list[i].style.display = 'block';
-            if (feedback_list[i].classList.contains('invalid-feedback'))
-                feedback_list[i].style.display = 'none';
-        }
+        make_valid(id_form, feedback_list);
     } else {    // false : 중복된 아이디
-        id_form.classList.add('is-invalid');
-        id_form.classList.remove('is-valid');
-        for (let i = 0; i < feedback_list.length; i++) {
-            if (feedback_list[i].classList.contains('valid-feedback'))
-                feedback_list[i].style.display = 'none';
-            if (feedback_list[i].classList.contains('invalid-feedback')) {
-                if (msg === '') {
-                    feedback_list[i].classList.add('duplicate');
-                    feedback_list[i].classList.remove('empty');
-                }
-                else {
-                    feedback_list[i].classList.add('empty');
-                    feedback_list[i].classList.remove('duplicate');
-                }
-                feedback_list[i].style.display = 'block';
-            }
-        }
+        make_invalid(id_form, feedback_list, msg);
     }
 }
 
@@ -78,6 +55,56 @@ document.getElementById('register_form').addEventListener('submit', (e) => {
         alert('아이디 중복을 확인하세요');
         e.preventDefault();
     }
+});
+
+function make_default(element, feedback_list) {
+    element.classList.remove('is-valid');
+    element.classList.remove('is-invalid');
+
+    for (let i = 0; i < feedback_list.length; i++) {
+        if (feedback_list[i].classList.contains('valid-feedback'))
+            feedback_list[i].style.display = 'none';
+        if (feedback_list[i].classList.contains('invalid-feedback'))
+            feedback_list[i].style.display = 'none';
+    }
+}
+
+function make_valid(element, feedback_list) {
+    element.classList.add('is-valid');
+    element.classList.remove('is-invalid');
+
+    for (let i = 0; i < feedback_list.length; i++) {
+        if (feedback_list[i].classList.contains('valid-feedback'))
+            feedback_list[i].style.display = 'block';
+        if (feedback_list[i].classList.contains('invalid-feedback'))
+            feedback_list[i].style.display = 'none';
+    }
+}
+
+function make_invalid(element, feedback_list, msg) {
+    element.classList.add('is-invalid');
+    element.classList.remove('is-valid');
+
+    for (let i = 0; i < feedback_list.length; i++) {
+        if (feedback_list[i].classList.contains('valid-feedback'))
+            feedback_list[i].style.display = 'none';
+        if (feedback_list[i].classList.contains('invalid-feedback')) {
+            if (msg === '') {
+                feedback_list[i].classList.add('duplicate');
+                feedback_list[i].classList.remove('empty');
+            }
+            else {
+                feedback_list[i].classList.add('empty');
+                feedback_list[i].classList.remove('duplicate');
+            }
+            feedback_list[i].style.display = 'block';
+        }
+    }
+}
+
+document.getElementById('id').addEventListener('change', (e) => {
+    const feedback_list = e.target.parentNode.parentNode.children;
+    make_default(e.target, feedback_list);
 });
 
 

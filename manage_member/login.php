@@ -28,6 +28,8 @@ if (isset($_GET['msg'])) {
 
     <!--Bootstrap-->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <div class="container">
@@ -39,11 +41,11 @@ if (isset($_GET['msg'])) {
             <form action="./process_login.php" method="post">
                 <div class="mb-3">
                     <label for="id" class="form-label">ID</label>
-                    <input type="text" name="id" id="id" class="form-control"/>
+                    <input type="text" name="id" id="id" class="form-control" required/>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">PASSWORD</label>
-                    <input type="password" name="password" id="password" class="form-control" />
+                    <input type="password" name="password" id="password" class="form-control" required/>
                 </div>
                 <div class="col-12 d-flex justify-content-between">
                     <div>

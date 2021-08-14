@@ -1,3 +1,10 @@
+<?php
+// 회원가입 실패 등의 메시지 전달 시 알림
+if (isset($_GET['msg'])) {
+    echo '<script>alert("'.$_GET['msg'].'");</script>';
+}
+?>
+
 <!doctype html>
 <html lang="ko">
 <head>
