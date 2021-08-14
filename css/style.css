@@ -1,0 +1,7 @@
+#input_id > div.invalid-feedback.empty::after {
+    content: ' 아이디를 입력하세요.';
+}
+
+#input_id > div.invalid-feedback.duplicate::after {
+    content: ' 중복된 아이디 입니다.';
+}

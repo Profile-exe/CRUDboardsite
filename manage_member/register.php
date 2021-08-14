@@ -9,6 +9,8 @@
 
     <!--Bootstrap-->
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 <div class="container">
@@ -17,10 +19,15 @@
             <div class="mb-3 text-center">
                 <h1>회원가입</h1>
             </div>
-            <form action="./member-insert.php" method="post">
-                <div class="mb-3">
+            <form id="register_form" action="process_member_insert.php" method="post">
+                <div id="input_id" class="needs-validation mb-3">
                     <label for="id" class="form-label">ID</label>
-                    <input type="text" name="id" id="id" class="form-control" required/>
+                    <div class="input-group">
+                        <input type="text" name="id" id="id" class="form-control" required/>
+                        <button type="button" id="duplicate_check_btn" class="btn btn-secondary">중복확인</button>
+                    </div>
+                    <div class="valid-feedback id-feedback">사용 가능한 아이디입니다.</div>
+                    <div class="invalid-feedback id-feedback">사용 불가능한 아이디입니다.</div>
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">PASSWORD</label>
@@ -33,13 +40,14 @@
                 <div class="mb-3">
                 </div>
                 <div class="col-12 d-flex justify-content-between">
-                    <input type="submit" value="회원가입" class="btn btn-primary"/>
+                    <input type="submit" value="회원가입" id="register-btn" class="btn btn-primary"/>
                     <a href="../index.php" class="btn btn-outline-secondary">돌아가기</a>
                 </div>
             </form>
         </div>
     </div>
 </div>
+<script src="../js/script.js"></script>
 <!--Bootstrap-->
 <script src="../js/bootstrap.min.js"></script>
 </body>

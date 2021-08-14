@@ -38,10 +38,12 @@ if ($result) {  // 글이 존재하는 경우 출력
 
     <!--Bootstrap-->
     <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div class="container mt-3 mb-3">
-    <header>
+    <header class="mb-5">
         <nav class="navbar mb-3"></nav>
         <h1 class="text-center">DDING BOARD</h1>
     </header>
