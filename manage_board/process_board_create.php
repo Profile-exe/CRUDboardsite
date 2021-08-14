@@ -1,27 +1,32 @@
 <?php
 require_once '../db.class.php';
 
+// 세션 시작
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 $sql = "
     INSERT INTO board
-        (board_title, board_content, created, author_id)
+        (board_title, board_content, created, user_id)
         VALUES (
                 :board_title,
                 :board_content,
                 NOW(),
-                :author_id
+                :user_id
         )
 ";
 
 $article = array(   // 입력 필터링
     'board_title'       => htmlspecialchars($_POST['board_title']),
     'board_content'     => htmlspecialchars($_POST['board_content']),
-    'author_id'         => htmlspecialchars($_POST['author_id'])
+    'user_id'           => htmlspecialchars($_SESSION['user_id'])
 );
 
 $result = DB::query($sql, array(
     ':board_title'      => $article['board_title'],
     ':board_content'    => $article['board_content'],
-    ':author_id'        => $article['author_id']
+    ':user_id'          => $article['user_id']
 ));
 
 // redirection
