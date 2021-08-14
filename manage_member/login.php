@@ -4,13 +4,6 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
-/*
- * 로그인 상태인 경우 해야될 것들
- * 로그인 버튼을 로그아웃 버튼으로 바꾸기
- */    
-}
-
 // 로그인 실패 등의 메시지 전달 시 알림
 if (isset($_GET['msg'])) {
     echo '<script>alert("'.$_GET['msg'].'");</script>';

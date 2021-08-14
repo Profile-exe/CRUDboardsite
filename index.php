@@ -1,6 +1,11 @@
 <?php
 require_once 'db.class.php';
 
+// 세션 시작
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 $sql = "
     SELECT
         board_id, board_title, author_name, date_format(created, '%m-%d %H:%i') as created, view_count 
@@ -25,6 +30,14 @@ if ($result) {  // 글이 존재하는 경우 출력
     ";
     }
 }
+
+$login_btn = '';
+if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
+    $login_btn = '<a href="manage_member/logout.php" class="btn btn-secondary">로그아웃</a>';
+} else {
+    $login_btn = '<a href="manage_member/login.php" class="btn btn-secondary">로그인</a>';
+}
+
 ?>
 
 <!doctype html>
@@ -49,7 +62,7 @@ if ($result) {  // 글이 존재하는 경우 출력
     </header>
     <section>
         <div class="col-12 d-flex justify-content-between mb-3">
-            <a href="manage_member/login.php" class="btn btn-secondary">로그인</a>
+            <?=$login_btn?>
             <a href="manage_board/board_create.php" class="btn btn-primary">글쓰기</a>
         </div>
         <table class="table table-hover">
