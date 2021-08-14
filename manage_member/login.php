@@ -26,7 +26,7 @@ if (isset($_GET['msg'])) {
 </head>
 <body>
 <div class="container">
-    <div class="row m-5 justify-content-center">
+    <div class="row m-5 d-flex justify-content-center">
         <div class="col-md-6">
             <div class="mb-3 text-center">
                 <h1>로그인</h1>

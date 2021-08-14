@@ -21,7 +21,7 @@ if (isset($_GET['msg'])) {
 </head>
 <body>
 <div class="container">
-    <div class="row m-5 justify-content-center">
+    <div class="row m-5 d-flex justify-content-center">
         <div class="col-md-6">
             <div class="mb-3 text-center">
                 <h1>회원가입</h1>
@@ -54,7 +54,7 @@ if (isset($_GET['msg'])) {
         </div>
     </div>
 </div>
-<script src="../js/script.js"></script>
+<script src="../js/duplicate_verification.js"></script>
 <!--Bootstrap-->
 <script src="../js/bootstrap.min.js"></script>
 </body>
