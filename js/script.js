@@ -61,11 +61,11 @@ function make_default(element, feedback_list) {
     element.classList.remove('is-valid');
     element.classList.remove('is-invalid');
 
-    for (let i = 0; i < feedback_list.length; i++) {
-        if (feedback_list[i].classList.contains('valid-feedback'))
-            feedback_list[i].style.display = 'none';
-        if (feedback_list[i].classList.contains('invalid-feedback'))
-            feedback_list[i].style.display = 'none';
+    for (const item of feedback_list) {
+        if (item.classList.contains('valid-feedback'))
+            item.style.display = 'none';
+        if (item.classList.contains('invalid-feedback'))
+            item.style.display = 'none';
     }
 }
 
@@ -73,11 +73,11 @@ function make_valid(element, feedback_list) {
     element.classList.add('is-valid');
     element.classList.remove('is-invalid');
 
-    for (let i = 0; i < feedback_list.length; i++) {
-        if (feedback_list[i].classList.contains('valid-feedback'))
-            feedback_list[i].style.display = 'block';
-        if (feedback_list[i].classList.contains('invalid-feedback'))
-            feedback_list[i].style.display = 'none';
+    for (const item of feedback_list) {
+        if (item.classList.contains('valid-feedback'))
+            item.style.display = 'block';
+        if (item.classList.contains('invalid-feedback'))
+            item.style.display = 'none';
     }
 }
 
@@ -85,19 +85,19 @@ function make_invalid(element, feedback_list, msg) {
     element.classList.add('is-invalid');
     element.classList.remove('is-valid');
 
-    for (let i = 0; i < feedback_list.length; i++) {
-        if (feedback_list[i].classList.contains('valid-feedback'))
-            feedback_list[i].style.display = 'none';
-        if (feedback_list[i].classList.contains('invalid-feedback')) {
+    for (const item of feedback_list) {
+        if (item.classList.contains('valid-feedback'))
+            item.style.display = 'none';
+        if (item.classList.contains('invalid-feedback')) {
             if (msg === '') {
-                feedback_list[i].classList.add('duplicate');
-                feedback_list[i].classList.remove('empty');
+                item.classList.add('duplicate');
+                item.classList.remove('empty');
             }
             else {
-                feedback_list[i].classList.add('empty');
-                feedback_list[i].classList.remove('duplicate');
+                item.classList.add('empty');
+                item.classList.remove('duplicate');
             }
-            feedback_list[i].style.display = 'block';
+            item.style.display = 'block';
         }
     }
 }
