@@ -1,6 +1,16 @@
 <?php
 require_once '../db.class.php';
 
+// 로그인체크
+if(session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// 로그인 안했을 때 로그인 페이지로 redirect
+if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '') {
+    header("Location: ./login.php");
+}
+
 $sql = "
     SELECT * FROM board
     WHERE board_id=:id
@@ -14,8 +24,14 @@ $result = DB::query($sql, array(
 $article = array(
     'board_id'      => $result[0]['board_id'],
     'board_title'   => $result[0]['board_title'],
-    'board_content' => $result[0]['board_content']
+    'board_content' => $result[0]['board_content'],
+    'user_id'       => $result[0]['user_id']
 );
+
+// id 값을 달리하여 이 파일에 접근하는 경우 게시글의 저자가 아니면 redirect
+if ($_SESSION['user_id'] != $article['user_id']) {
+    header('Location: ../index.php');
+}
 
 ?>
 <!doctype html>
