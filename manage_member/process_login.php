@@ -13,8 +13,9 @@ if (isset($_POST['id']) && isset($_POST['password'])) {
 
     // 아이디와 비밀번호가 일치한다면
     if ($result && count($result) > 0 && password_verify($user_password, $result[0]['user_password'])) {
-        $_SESSION['user_id'] = $user_id;
-        $_SESSION['user_password'] = $user_password;
+        $_SESSION['user_id']        = $user_id;
+        $_SESSION['user_name']      = $result[0]['user_name'];
+        $_SESSION['user_password']  = $user_password;
         header('Location: ../index.php');
     } else {
         // 로그인 실패 시 msg 전달

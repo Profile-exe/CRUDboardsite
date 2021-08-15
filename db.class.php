@@ -31,7 +31,6 @@ class DB{
         if(trim(explode(' ', $query)[0]) == "SELECT") { // "SELECT " 이러면 인식 안되므로 한번 더 trim
             return $statement->fetchAll();
         } else {
-            echo $errorinfo[2];
             return $statement->rowCount();
         }
     }

@@ -1,10 +1,16 @@
 <?php
 require_once '../db.class.php';
 
+// 로그인체크
+if(session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 $board_id = $_GET['id'];
 $is_integer = settype($board_id, 'integer');
 
 $result = null;
+$article = null;
 if ($is_integer) {  // 정수는 true 반환됨
     try {
         $sql = "
@@ -27,6 +33,13 @@ if ($is_integer) {  // 정수는 true 반환됨
     }
 } else {
     header('Location: ../index.php?msg=Error occurred while reading board');
+}
+
+$delete_btn = '';
+if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '' || $_SESSION['user_name'] != $article['user_name']) {
+    $delete_btn = '<div></div>';
+} else {
+    $delete_btn = "<a href=\"process_board_delete.php?id={$article['board_id']}\" class=\"btn btn-outline-danger\">삭제</a>";
 }
 ?>
 
@@ -75,7 +88,8 @@ if ($is_integer) {  // 정수는 true 반환됨
                     <?=$article['board_content']?>
                 </div>
             </div>
-            <div class="d-flex justify-content-end">
+            <div class="d-flex justify-content-between">
+                <?=$delete_btn?>
                 <a href="../index.php" class="btn btn-outline-secondary">돌아가기</a>
             </div>
         </section>
