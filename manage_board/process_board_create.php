@@ -1,6 +1,10 @@
 <?php
 require_once '../db.class.php';
 
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 $sql = "
     INSERT INTO board
         (board_title, board_content, created, user_id)

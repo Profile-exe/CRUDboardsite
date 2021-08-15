@@ -12,9 +12,9 @@ if (isset($_POST['id']) && isset($_POST['password']) && isset($_POST['name'])) {
             ':password' => password_hash($password, PASSWORD_DEFAULT),
             ':name'     => $name
         ));
-        header('Location: ./login.php?msg=register succeeded');
+        header('Location: ./login.php?msg=register_succeeded');
     } catch (Exception $e) {
-        header('Location: ./register.php?msg=error occurred');
+        header('Location: ./register.php?msg=error_occurred');
     }
 } else {
     header('Location: ./register.php');

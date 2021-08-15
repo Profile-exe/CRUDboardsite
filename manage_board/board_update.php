@@ -8,7 +8,7 @@ if(session_status() == PHP_SESSION_NONE) {
 
 // 로그인 안했을 때 로그인 페이지로 redirect
 if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '') {
-    header("Location: ./login.php");
+    exit(header("Location: ../manage_member/login.php"));
 }
 
 $sql = "

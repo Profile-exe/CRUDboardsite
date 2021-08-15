@@ -8,10 +8,20 @@ if(session_status() == PHP_SESSION_NONE) {
 
 // 로그인 안했을 때 로그인 페이지로 redirect
 if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '') {
-    header("Location: ./login.php");
+    exit(header("Location: ../manage_member/login.php?msg=redirect_to_login"));
 }
 
 settype($_GET['id'], 'integer');
+
+$result = DB::query("SELECT * FROM board WHERE board_id=:id", array(
+    ':id' => $_GET['id']
+));
+
+// id 값을 달리하여 이 파일에 접근하는 경우 게시글의 저자가 아니면 redirect
+if ($_SESSION['user_id'] != $result[0]['user_id']) {
+    exit(header('Location: ../index.php?msg=wrong_approach'));
+}
+
 $result = DB::query('DELETE FROM board WHERE board_id=:id', array(
     ':id' => $_GET['id']
 ));
@@ -19,6 +29,6 @@ $result = DB::query('DELETE FROM board WHERE board_id=:id', array(
 if ($result > 0) {
     header('Location: ../index.php');
 } else {
-    header('Location: ../index.php?msg=Error occurred while deleting board');
+    header('Location: ../index.php?msg=Error_occurred_while_deleting_board');
 }
 

@@ -29,15 +29,15 @@ if ($is_integer) {  // 정수는 true 반환됨
         ));
 
         if ($result == array()) {
-            header('Location: ../index.php?msg=Wrong board ID');
+            exit(header('Location: ../index.php?msg=Wrong_board_ID'));
         }
 
         $article = $result[0];
     } catch (Exception $e) {
-        header('Location: ../index.php?msg=Error occurred while reading board');
+        header('Location: ../index.php?msg=Error_occurred_while_reading_board');
     }
 } else {
-    header('Location: ../index.php?msg=Error occurred while reading board');
+    header('Location: ../index.php?msg=Error_occurred_while_reading_board');
 }
 
 $delete_btn = '';

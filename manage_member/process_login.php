@@ -19,6 +19,6 @@ if (isset($_POST['id']) && isset($_POST['password'])) {
         header('Location: ../index.php');
     } else {
         // 로그인 실패 시 msg 전달
-        header('Location: login.php?msg=Login Failed');
+        header('Location: login.php?msg=Login_Failed');
     }
 }
