@@ -6,6 +6,11 @@ if(session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
+// 메시지 전달 시 알림
+if (isset($_GET['msg'])) {
+    echo '<script>alert("'.$_GET['msg'].'");</script>';
+}
+
 $board_id = $_GET['id'];
 $is_integer = settype($board_id, 'integer');
 
@@ -36,9 +41,12 @@ if ($is_integer) {  // 정수는 true 반환됨
 }
 
 $delete_btn = '';
+$update_btn = '';
 if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '' || $_SESSION['user_name'] != $article['user_name']) {
     $delete_btn = '<div></div>';
+    $update_btn = '<div></div>';
 } else {
+    $update_btn = "<a href=\"board_update.php?id={$article['board_id']}\" class=\"btn btn-outline-primary\">수정</a>";
     $delete_btn = "<a href=\"process_board_delete.php?id={$article['board_id']}\" class=\"btn btn-outline-danger\">삭제</a>";
 }
 ?>
@@ -89,7 +97,10 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '' || $_SESSION['user
                 </div>
             </div>
             <div class="d-flex justify-content-between">
-                <?=$delete_btn?>
+                <div>
+                    <?=$update_btn?>
+                    <?=$delete_btn?>
+                </div>
                 <a href="../index.php" class="btn btn-outline-secondary">돌아가기</a>
             </div>
         </section>
