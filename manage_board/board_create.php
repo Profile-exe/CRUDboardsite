@@ -1,15 +1,3 @@
-<?php
-require_once '../db.class.php';
-
-$sql = "SELECT * FROM author";
-$result = DB::query($sql);
-$options = '';
-
-foreach ($result as $index => $row) {
-    $options .= '<option value="'.$row['author_id'].'">'.$row['author_name'].'</option>';
-}
-
-?>
 <!doctype html>
 <html lang="ko">
 <head>
@@ -39,7 +27,7 @@ foreach ($result as $index => $row) {
                     <textarea class="form-control" id="input_board_content" name="board_content" style="resize: none;" rows="11" placeholder="내용을 입력하세요." required></textarea>
                 </div>
                 <div class="mb-3 d-flex justify-content-end">
-                    <input type="submit" class="btn btn-primary">
+                    <input type="submit" class="btn btn-primary" value="작성">
                     <a href="../index.php" class="btn btn-secondary ms-2">취소</a>
                 </div>
             </form>

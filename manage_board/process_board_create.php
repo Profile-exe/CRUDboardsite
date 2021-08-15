@@ -1,11 +1,6 @@
 <?php
 require_once '../db.class.php';
 
-// 세션 시작
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-
 $sql = "
     INSERT INTO board
         (board_title, board_content, created, user_id)
