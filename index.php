@@ -16,7 +16,8 @@ $sql = "
         board_id, board_title, user_name, date_format(created, '%m-%d %H:%i') as created, view_count 
     FROM board INNER JOIN user
     ON board.user_id = user.user_id
-    LIMIT 10
+    ORDER BY created DESC
+    LIMIT 1000
 ";
 
 $result = DB::query($sql);
