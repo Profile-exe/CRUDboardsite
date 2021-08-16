@@ -16,7 +16,8 @@ if (isset($_POST['id']) && isset($_POST['password'])) {
         $_SESSION['user_id']        = $user_id;
         $_SESSION['user_name']      = $result[0]['user_name'];
         $_SESSION['user_password']  = $user_password;
-        header('Location: ../index.php');
+        // 로그인 버튼을 누른 페이지로 이동
+        header('Location: '.$_POST['return_page']);
     } else {
         // 로그인 실패 시 msg 전달
         header('Location: login.php?msg=Login_Failed');
