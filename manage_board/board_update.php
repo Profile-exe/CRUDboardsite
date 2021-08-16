@@ -51,7 +51,7 @@ if ($_SESSION['user_id'] != $article['user_id']) {
         <header class="my-4">
             <nav class="navbar navbar-light">
                 <div class="container-fluid px-0 d-flex justify-content-between">
-                    <a href="../index.php" class="navbar-brand" style="font-weight: bold; font-size: 2em">DDING BOARD</a>
+                    <a href="../index.php" class="navbar-brand py-0" style="font-weight: bold; font-size: 2em">DDING BOARD</a>
                     <!-- Split dropstart button -->
                     <div class="btn-group">
                         <div class="btn-group dropstart" role="group">

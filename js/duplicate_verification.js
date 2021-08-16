@@ -22,20 +22,20 @@ document.getElementById('duplicate_check_btn').addEventListener('click', () => {
             id: input_id
         })
     })
-        .then((res) => res.text())
-        .then((data) => {
-            console.log(data);
-            switch(data) {
-                case 'true': {      // 사용 가능한 아이디
-                    change_btn_status(true);
-                    break;
-                }
-                case 'false': {     // 사용 불가능한 아이디
-                    change_btn_status(false);
-                    break;
-                }
+    .then((res) => res.text())
+    .then((data) => {
+        console.log(data);
+        switch(data) {
+            case 'true': {      // 사용 가능한 아이디
+                change_btn_status(true);
+                break;
             }
-        });
+            case 'false': {     // 사용 불가능한 아이디
+                change_btn_status(false);
+                break;
+            }
+        }
+    });
 });
 
 function change_btn_status(bool, msg = '') {
