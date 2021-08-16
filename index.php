@@ -77,7 +77,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
                                 <span class="visually-hidden">Toggle Dropstart</span>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="manage_member/member_info.php">내 정보</a></li>
+                                <li><button id="info_btn" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#info_modal">내 정보</button></li>
                                 <li><a class="dropdown-item" href="#">내가 쓴 글</a></li>
                             </ul>
                         </div>
@@ -110,7 +110,15 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
             </table>
         </section>
     </div>
+    <!--member_info modal-->
+    <div id="info_modal" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
 </div>
+<script src="js/member_info.js"></script>
 <script src="js/dropdown_loginout.js"></script>
 <!--Bootstrap-->
 <script src="js/bootstrap.min.js"></script>
