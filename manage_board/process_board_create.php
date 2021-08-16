@@ -7,12 +7,13 @@ if (session_status() == PHP_SESSION_NONE) {
 
 $sql = "
     INSERT INTO board
-        (board_title, board_content, created, user_id)
+        (board_title, board_content, created, user_id, updated)
         VALUES (
                 :board_title,
                 :board_content,
                 NOW(),
-                :user_id
+                :user_id,
+                NOW()
         )
 ";
 

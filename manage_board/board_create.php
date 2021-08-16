@@ -1,3 +1,17 @@
+<?php
+require_once '../db.class.php';
+
+if(session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// 로그인 안했을 때 로그인 페이지로 redirect
+if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '') {
+    exit(header("Location: ../manage_member/login.php"));
+}
+
+?>
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -14,7 +28,24 @@
 <div class="container my-3 d-flex justify-content-center">
     <div class="col-10">
         <header class="my-4">
-            <h1 class="text-center">DDING BOARD</h1>
+            <nav class="navbar navbar-light">
+                <div class="container-fluid px-0 d-flex justify-content-between">
+                    <a href="../index.php" class="navbar-brand" style="font-weight: bold; font-size: 2em">DDING BOARD</a>
+                    <!-- Split dropstart button -->
+                    <div class="btn-group">
+                        <div class="btn-group dropstart" role="group">
+                            <button type="button" id="dropdown-toggle" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropstart</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">내 정보</a></li>
+                                <li><a class="dropdown-item" href="#">내가 쓴 글</a></li>
+                            </ul>
+                        </div>
+                        <a id="loginout_btn" href="../manage_member/process_logout.php" class="btn btn-secondary">로그아웃</a>
+                    </div>
+                </div>
+            </nav>
         </header>
         <section>
             <form class="mt-5" action="process_board_create.php" method="post">
@@ -34,6 +65,7 @@
         </section>
     </div>
 </div>
+<script src="../js/dropdown_loginout.js"></script>
 <!--Bootstrap-->
 <script src="../js/bootstrap.min.js"></script>
 </body>

@@ -40,10 +40,10 @@ if ($result) {  // 글이 존재하는 경우 출력
 $loginout = '';
 $write_btn = '';
 if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
-    $loginout = '<a href="manage_member/process_logout.php" class="btn btn-secondary">로그아웃</a>';
+    $loginout = '<a id="loginout_btn" href="manage_member/process_logout.php" class="btn btn-secondary">로그아웃</a>';
     $write_btn = '<a id="write_btn" href="manage_board/board_create.php" class="btn btn-primary">글쓰기</a>';
 } else {
-    $loginout = '<a href="manage_member/login.php" class="btn btn-secondary">로그인</a>';
+    $loginout = '<a id="loginout_btn" href="manage_member/login.php" class="btn btn-secondary">로그인</a>';
     $write_btn = '<button class="btn btn-primary" disabled>글쓰기</button>';
 }
 
@@ -67,14 +67,34 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
 <div class="container my-3 d-flex justify-content-center">
     <div class="col-10">
         <header class="my-4">
-            <h1 class="text-center">DDING BOARD</h1>
+            <nav class="navbar navbar-light">
+                <div class="container-fluid px-0 d-flex justify-content-between">
+                    <a href="index.php" class="navbar-brand" style="font-weight: bold; font-size: 2em">DDING BOARD</a>
+                    <!-- Split dropstart button -->
+                    <div class="btn-group">
+                        <div class="btn-group dropstart" role="group">
+                            <button type="button" id="dropdown-toggle" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropstart</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">내 정보</a></li>
+                                <li><a class="dropdown-item" href="#">내가 쓴 글</a></li>
+                            </ul>
+                        </div>
+                        <?=$loginout?>
+                    </div>
+                </div>
+            </nav>
         </header>
         <section>
             <div class="col-12 d-flex justify-content-between mb-3">
-                <?=$loginout?>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
                 <?=$write_btn?>
             </div>
-            <table class="table table-hover">ㄴ
+            <table class="table table-hover">
                 <thead class="table-light">
                 <tr>
                     <th class="text-center" scope="col">#</th>
@@ -91,6 +111,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
         </section>
     </div>
 </div>
+<script src="js/dropdown_loginout.js"></script>
 <!--Bootstrap-->
 <script src="js/bootstrap.min.js"></script>
 </body>

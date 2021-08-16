@@ -1,7 +1,6 @@
 <?php
 require_once '../db.class.php';
 
-// 로그인체크
 if(session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -40,6 +39,13 @@ if ($is_integer) {  // 정수는 true 반환됨
     header('Location: ../index.php?msg=Error_occurred_while_reading_board');
 }
 
+$loginout = '';
+if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
+    $loginout = '<a id="loginout_btn" href="../manage_member/process_logout.php" class="btn btn-secondary">로그아웃</a>';
+} else {
+    $loginout = '<a id="loginout_btn" href="../manage_member/login.php" class="btn btn-secondary">로그인</a>';
+}
+
 $delete_btn = '';
 $update_btn = '';
 if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '' || $_SESSION['user_name'] != $article['user_name']) {
@@ -69,7 +75,24 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '' || $_SESSION['user
 <div class="container my-3 d-flex justify-content-center">
     <div class="col-10">
         <header class="my-4">
-            <h1 class="text-center">DDING BOARD</h1>
+            <nav class="navbar navbar-light">
+                <div class="container-fluid px-0 d-flex justify-content-between">
+                    <a href="../index.php" class="navbar-brand" style="font-weight: bold; font-size: 2em">DDING BOARD</a>
+                    <!-- Split dropstart button -->
+                    <div class="btn-group">
+                        <div class="btn-group dropstart" role="group">
+                            <button type="button" id="dropdown-toggle" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropstart</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">내 정보</a></li>
+                                <li><a class="dropdown-item" href="#">내가 쓴 글</a></li>
+                            </ul>
+                        </div>
+                        <?=$loginout?>
+                    </div>
+                </div>
+            </nav>
         </header>
         <section>
             <div class="borard_header">
@@ -113,6 +136,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '' || $_SESSION['user
         </section>
     </div>
 </div>
+<script src="../js/dropdown_loginout.js"></script>
 <!--Bootstrap-->
 <script src="../js/bootstrap.min.js"></script>
 </body>

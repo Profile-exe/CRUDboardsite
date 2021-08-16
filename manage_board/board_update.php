@@ -1,7 +1,6 @@
 <?php
 require_once '../db.class.php';
 
-// 로그인체크
 if(session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -50,7 +49,24 @@ if ($_SESSION['user_id'] != $article['user_id']) {
 <div class="container my-3 d-flex justify-content-center">
     <div class="col-10">
         <header class="my-4">
-            <h1 class="text-center">DDING BOARD</h1>
+            <nav class="navbar navbar-light">
+                <div class="container-fluid px-0 d-flex justify-content-between">
+                    <a href="../index.php" class="navbar-brand" style="font-weight: bold; font-size: 2em">DDING BOARD</a>
+                    <!-- Split dropstart button -->
+                    <div class="btn-group">
+                        <div class="btn-group dropstart" role="group">
+                            <button type="button" id="dropdown-toggle" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropstart</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">내 정보</a></li>
+                                <li><a class="dropdown-item" href="#">내가 쓴 글</a></li>
+                            </ul>
+                        </div>
+                        <a id="loginout_btn" href="../manage_member/process_logout.php" class="btn btn-secondary">로그아웃</a>
+                    </div>
+                </div>
+            </nav>
         </header>
         <section>
             <form class="mt-5" action="process_board_update.php" method="post">
@@ -65,12 +81,13 @@ if ($_SESSION['user_id'] != $article['user_id']) {
                 </div>
                 <div class="mb-3 d-flex justify-content-end">
                     <input type="submit" class="btn btn-primary" value="수정">
-                    <a href="../index.php" class="btn btn-secondary ms-2">취소</a>
+                    <a href="<?=$_SERVER['HTTP_REFERER']?>" class="btn btn-secondary ms-2">취소</a>
                 </div>
             </form>
         </section>
     </div>
 </div>
+<script src="../js/dropdown_loginout.js"></script>
 <!--Bootstrap-->
 <script src="../js/bootstrap.min.js"></script>
 </body>
