@@ -3,8 +3,9 @@ require_once '../db.class.php';
 
 $sql = "
     UPDATE board SET
-        board_title = :title,
-        board_content = :content
+        board_title    = :title,
+        board_content  = :content,
+        updated        = NOW()
         WHERE board_id = :board_id
 ";
 

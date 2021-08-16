@@ -74,7 +74,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
                 <?=$loginout?>
                 <?=$write_btn?>
             </div>
-            <table class="table table-hover">
+            <table class="table table-hover">ㄴ
                 <thead class="table-light">
                 <tr>
                     <th class="text-center" scope="col">#</th>

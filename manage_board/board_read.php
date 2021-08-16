@@ -19,7 +19,7 @@ $article = null;
 if ($is_integer) {  // 정수는 true 반환됨
     try {
         $sql = "
-            SELECT board_id, board_title, board_content, created, view_count, user_name FROM board
+            SELECT board_id, board_title, board_content, created, view_count, user_name, updated FROM board
             INNER JOIN user ON board.user_id = user.user_id
             WHERE board_id = :board_id;
         ";
@@ -94,6 +94,13 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '' || $_SESSION['user
             <div class="board_body mb-5">
                 <div class="board_content" style="font-size:1.5em; color:black;">
                     <?=$article['board_content']?>
+                </div>
+            </div>
+            <hr>
+            <div class="board_modify_info d-flex justify-content-start mb-3">
+                <div class="last_update">
+                    <span style="font-weight: bold;">Last Update</span>
+                    <?=$article['updated']?>
                 </div>
             </div>
             <div class="d-flex justify-content-between">
