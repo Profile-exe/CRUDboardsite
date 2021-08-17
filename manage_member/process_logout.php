@@ -9,4 +9,9 @@ if (isset($_SESSION['user_id'])) {
     session_destroy();
 }
 
-header('Location: '.$_SERVER['HTTP_REFERER']);
+$redirect = '/index.php';
+if (isset($_SERVER['HTTP_REFERER'])) {
+    $redirect = $_SERVER['HTTP_REFERER'];
+}
+
+header('Location: '.$redirect);

@@ -8,6 +8,11 @@ if (session_status() == PHP_SESSION_NONE) {
 if (isset($_GET['msg'])) {
     echo '<script>alert("'.$_GET['msg'].'");</script>';
 }
+
+$redirect = '/index.php';
+if (isset($_SERVER['HTTP_REFERER'])) {
+    $redirect = $_SERVER['HTTP_REFERER'];
+}
 ?>
 
 <!doctype html>
@@ -32,7 +37,7 @@ if (isset($_GET['msg'])) {
                 <h1>로그인</h1>
             </div>
             <form action="/manage_member/process_login.php" method="post">
-                <input type="hidden" name="return_page" value="<?=$_SERVER['HTTP_REFERER']?>">
+                <input type="hidden" name="return_page" value="<?=$redirect?>">
                 <div class="mb-3">
                     <label for="id" class="form-label">ID</label>
                     <input type="text" name="id" id="id" class="form-control" required/>
