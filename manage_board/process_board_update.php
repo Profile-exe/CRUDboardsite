@@ -22,7 +22,7 @@ $result = DB::query($sql, array(
 ));
 
 if ($result > 0) {
-    header("Location: board_read.php?id={$article['board_id']}");
+    header("Location: /manage_board/board_read.php?id={$article['board_id']}");
 } else {
-    header("Location: board_read.php?id={$article['board_id']}&msg=Error_occurred_while_updating_board");
+    header("Location: /manage_board/board_read.php?id={$article['board_id']}&msg=Error_occurred_while_updating_board");
 }

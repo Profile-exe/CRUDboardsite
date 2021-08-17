@@ -28,22 +28,22 @@ if ($is_integer) {  // 정수는 true 반환됨
         ));
 
         if ($result == array()) {
-            exit(header('Location: ../index.php?msg=Wrong_board_ID'));
+            exit(header('Location: /index.php?msg=Wrong_board_ID'));
         }
 
         $article = $result[0];
     } catch (Exception $e) {
-        header('Location: ../index.php?msg=Error_occurred_while_reading_board');
+        exit(header('Location: /index.php?msg=Error_occurred_while_reading_board'));
     }
 } else {
-    header('Location: ../index.php?msg=Error_occurred_while_reading_board');
+    exit(header('Location: /index.php?msg=Error_occurred_while_reading_board'));
 }
 
 $loginout = '';
 if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
-    $loginout = '<a id="loginout_btn" href="../manage_member/process_logout.php" class="btn btn-secondary">로그아웃</a>';
+    $loginout = '<a id="loginout_btn" href="/manage_member/process_logout.php" class="btn btn-secondary">로그아웃</a>';
 } else {
-    $loginout = '<a id="loginout_btn" href="../manage_member/login.php" class="btn btn-secondary">로그인</a>';
+    $loginout = '<a id="loginout_btn" href="/manage_member/login.php" class="btn btn-secondary">로그인</a>';
 }
 
 $delete_btn = '';
@@ -67,9 +67,9 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '' || $_SESSION['user
     <title>DDING BOARD</title>
 
     <!--Bootstrap-->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <div class="container my-3 d-flex justify-content-center">
@@ -77,7 +77,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '' || $_SESSION['user
         <header class="my-4">
             <nav class="navbar navbar-light">
                 <div class="container-fluid px-0 d-flex justify-content-between">
-                    <a href="../index.php" class="navbar-brand py-0" style="font-weight: bold; font-size: 2em">DDING BOARD</a>
+                    <a href="/index.php" class="navbar-brand py-0" style="font-weight: bold; font-size: 2em">DDING BOARD</a>
                     <!-- Split dropstart button -->
                     <div class="btn-group">
                         <div class="btn-group dropstart" role="group">
@@ -131,7 +131,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '' || $_SESSION['user
                     <?=$update_btn?>
                     <?=$delete_btn?>
                 </div>
-                <a href="../index.php" class="btn btn-outline-secondary">돌아가기</a>
+                <a href="/index.php" class="btn btn-outline-secondary">돌아가기</a>
             </div>
         </section>
     </div>
@@ -143,9 +143,9 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '' || $_SESSION['user
         </div>
     </div>
 </div>
-<script src="../js/member_info.js"></script>
-<script src="../js/dropdown_loginout.js"></script>
+<script src="/js/member_info.js"></script>
+<script src="/js/dropdown_loginout.js"></script>
 <!--Bootstrap-->
-<script src="../js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

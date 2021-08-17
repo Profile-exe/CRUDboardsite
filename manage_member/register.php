@@ -15,9 +15,9 @@ if (isset($_GET['msg'])) {
     <title>DDING BOARD</title>
 
     <!--Bootstrap-->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <div class="container">
@@ -26,7 +26,7 @@ if (isset($_GET['msg'])) {
             <div class="mb-3 text-center">
                 <h1>회원가입</h1>
             </div>
-            <form id="register_form" action="process_member_insert.php" method="post">
+            <form id="register_form" action="/manage_member/process_member_insert.php" method="post">
                 <div id="input_id" class="needs-validation mb-3">
                     <label for="id" class="form-label">ID</label>
                     <div class="input-group">
@@ -48,14 +48,14 @@ if (isset($_GET['msg'])) {
                 </div>
                 <div class="col-12 d-flex justify-content-between">
                     <input type="submit" value="회원가입" id="register-btn" class="btn btn-primary"/>
-                    <a href="../index.php" class="btn btn-outline-secondary">돌아가기</a>
+                    <a href="/index.php" class="btn btn-outline-secondary">돌아가기</a>
                 </div>
             </form>
         </div>
     </div>
 </div>
-<script src="../js/duplicate_verification.js"></script>
+<script src="/js/duplicate_verification.js"></script>
 <!--Bootstrap-->
-<script src="../js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

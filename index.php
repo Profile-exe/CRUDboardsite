@@ -26,7 +26,7 @@ $topic_list = '';
 if ($result) {  // 글이 존재하는 경우 출력
     foreach ($result as $index => $row) {
         $topic_list .= "
-            <tr style='cursor:pointer' onclick='location.href=\"manage_board/board_read.php?id={$row['board_id']}\"'>
+            <tr style='cursor:pointer' onclick='location.href=\"/manage_board/board_read.php?id={$row['board_id']}\"'>
                 <th class='col-1 text-center' scope='row'>{$row['board_id']}</th>
                 <td class='col-7'>{$row['board_title']}</td>
                 <td class='col-1 text-center'>{$row['user_name']}</td>
@@ -40,10 +40,10 @@ if ($result) {  // 글이 존재하는 경우 출력
 $loginout = '';
 $write_btn = '';
 if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
-    $loginout = '<a id="loginout_btn" href="manage_member/process_logout.php" class="btn btn-secondary">로그아웃</a>';
-    $write_btn = '<a id="write_btn" href="manage_board/board_create.php" class="btn btn-primary">글쓰기</a>';
+    $loginout = '<a id="loginout_btn" href="/manage_member/process_logout.php" class="btn btn-secondary">로그아웃</a>';
+    $write_btn = '<a id="write_btn" href="/manage_board/board_create.php" class="btn btn-primary">글쓰기</a>';
 } else {
-    $loginout = '<a id="loginout_btn" href="manage_member/login.php" class="btn btn-secondary">로그인</a>';
+    $loginout = '<a id="loginout_btn" href="/manage_member/login.php" class="btn btn-secondary">로그인</a>';
     $write_btn = '<button class="btn btn-primary" disabled>글쓰기</button>';
 }
 
@@ -118,9 +118,9 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
         </div>
     </div>
 </div>
-<script src="js/member_info.js"></script>
-<script src="js/dropdown_loginout.js"></script>
+<script src="/js/member_info.js"></script>
+<script src="/js/dropdown_loginout.js"></script>
 <!--Bootstrap-->
-<script src="js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -20,9 +20,9 @@ if (isset($_GET['msg'])) {
     <title>DDING BOARD</title>
 
     <!--Bootstrap-->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
 <div class="container">
@@ -31,7 +31,7 @@ if (isset($_GET['msg'])) {
             <div class="mb-3 text-center">
                 <h1>로그인</h1>
             </div>
-            <form action="./process_login.php" method="post">
+            <form action="/manage_member/process_login.php" method="post">
                 <input type="hidden" name="return_page" value="<?=$_SERVER['HTTP_REFERER']?>">
                 <div class="mb-3">
                     <label for="id" class="form-label">ID</label>
@@ -44,15 +44,15 @@ if (isset($_GET['msg'])) {
                 <div class="col-12 d-flex justify-content-between">
                     <div>
                         <input type="submit" value="로그인" class="btn btn-primary"/>
-                        <a href="./register.php" class="btn btn-secondary">회원가입</a>
+                        <a href="/manage_member/register.php" class="btn btn-secondary">회원가입</a>
                     </div>
-                    <a href="../index.php" class="btn btn-outline-secondary">돌아가기</a>
+                    <a href="/index.php" class="btn btn-outline-secondary">돌아가기</a>
                 </div>
             </form>
         </div>
     </div>
 </div>
 <!--Bootstrap-->
-<script src="../js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>

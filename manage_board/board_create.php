@@ -7,7 +7,7 @@ if(session_status() == PHP_SESSION_NONE) {
 
 // 로그인 안했을 때 로그인 페이지로 redirect
 if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '') {
-    exit(header("Location: ../manage_member/login.php"));
+    exit(header("Location: /manage_member/login.php"));
 }
 
 ?>
@@ -22,7 +22,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '') {
     <title>DDING BOARD</title>
 
     <!--Bootstrap-->
-    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 <body>
 <div class="container my-3 d-flex justify-content-center">
@@ -30,7 +30,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '') {
         <header class="my-4">
             <nav class="navbar navbar-light">
                 <div class="container-fluid px-0 d-flex justify-content-between">
-                    <a href="../index.php" class="navbar-brand py-0" style="font-weight: bold; font-size: 2em">DDING BOARD</a>
+                    <a href="/index.php" class="navbar-brand py-0" style="font-weight: bold; font-size: 2em">DDING BOARD</a>
                     <!-- Split dropstart button -->
                     <div class="btn-group">
                         <div class="btn-group dropstart" role="group">
@@ -42,7 +42,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '') {
                                 <li><a class="dropdown-item" href="#">내가 쓴 글</a></li>
                             </ul>
                         </div>
-                        <a id="loginout_btn" href="../manage_member/process_logout.php" class="btn btn-secondary">로그아웃</a>
+                        <a id="loginout_btn" href="/manage_member/process_logout.php" class="btn btn-secondary">로그아웃</a>
                     </div>
                 </div>
             </nav>
@@ -59,7 +59,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '') {
                 </div>
                 <div class="mb-3 d-flex justify-content-end">
                     <input type="submit" class="btn btn-primary" value="작성">
-                    <a href="../index.php" class="btn btn-secondary ms-2">취소</a>
+                    <a href="/index.php" class="btn btn-secondary ms-2">취소</a>
                 </div>
             </form>
         </section>
@@ -72,8 +72,8 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '') {
         </div>
     </div>
 </div>
-<script src="../js/dropdown_loginout.js"></script>
+<script src="/js/dropdown_loginout.js"></script>
 <!--Bootstrap-->
-<script src="../js/bootstrap.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 </body>
 </html>
