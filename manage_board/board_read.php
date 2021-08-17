@@ -115,7 +115,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '' || $_SESSION['user
                 <hr>
             </div>
             <div class="board_body mb-5">
-                <div class="board_content" style="font-size:1.5em; color:black;">
+                <div class="board_content" style="font-size:1.2em; color:black;">
                     <?=$article['board_content']?>
                 </div>
             </div>
