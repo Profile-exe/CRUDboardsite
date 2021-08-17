@@ -42,7 +42,7 @@ $info = array(
 echo "
     <div class='modal-header d-flex justify-content-between'>
         <h5 class='modal-title' id='exampleModalLabel'>내 정보</h5>
-        <a href='/manage_member/process_member_delete.php' class='btn btn-outline-danger'>탈퇴</a>
+        <a href='/manage_member/member_delete.php' class='btn btn-outline-danger'>탈퇴</a>
     </div>
     <div class='modal-body'>
         <form id='info' action='/manage_member/process_member_update.php' method='post'>
