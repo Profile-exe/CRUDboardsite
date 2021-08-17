@@ -13,6 +13,8 @@ if (!isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
 // 변경할 이름 값을 안넣은 경우
 if (!isset($_POST['user_name']) || $_POST['user_name'] === '') {
     exit(header('Location: /index.php?msg=Wrong_approach'));
+} else if ($_POST['user_name'] === $_SESSION['user_name']) {
+    exit(header('Location:'.$_POST['return_page']));
 }
 
 $sql = 'UPDATE user SET user_name = :name WHERE user_id = :id';
