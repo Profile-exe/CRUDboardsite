@@ -29,5 +29,12 @@ $result = DB::query($sql, array(
     ':user_id'          => $article['user_id']
 ));
 
+$result = DB::query('
+    UPDATE user 
+        SET board_count = board_count + 1 
+        WHERE user_id = :user_id',
+        array(':user_id' => $article['user_id'])
+);
+
 // redirection
 header('Location: ../index.php');

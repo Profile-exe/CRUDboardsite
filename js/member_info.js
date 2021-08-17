@@ -1,5 +1,5 @@
 document.getElementById('info_btn').addEventListener('click', () => {
-    fetch ('manage_member/member_info.php', {
+    fetch ('manage_member/modal_member_info.php', {
         method: 'GET',
         cache: 'no-cache'
     })

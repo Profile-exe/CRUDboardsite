@@ -26,7 +26,13 @@ $result = DB::query('DELETE FROM board WHERE board_id=:id', array(
     ':id' => $_GET['id']
 ));
 
-if ($result > 0) {
+if ($result > 0) {  // 성공적으로 제거 된 경우 board_count 1 감소
+    $result = DB::query('
+        UPDATE user
+            SET board_count = board_count - 1
+            WHERE user_id = :user_id',
+            array(':user_id' => $_SESSION['user_id'])
+    );
     header('Location: ../index.php');
 } else {
     header('Location: ../index.php?msg=Error_occurred_while_deleting_board');
