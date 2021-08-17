@@ -44,8 +44,6 @@ if (isset($_GET['msg'])) {
                     <label for="name" class="form-label">NAME</label>
                     <input type="text" name="name" id="name" class="form-control" required/>
                 </div>
-                <div class="mb-3">
-                </div>
                 <div class="col-12 d-flex justify-content-between">
                     <input type="submit" value="회원가입" id="register-btn" class="btn btn-primary"/>
                     <a href="/index.php" class="btn btn-outline-secondary">돌아가기</a>
@@ -54,6 +52,7 @@ if (isset($_GET['msg'])) {
         </div>
     </div>
 </div>
+<script src="/lib/change_valid_status.js"></script>
 <script src="/js/duplicate_verification.js"></script>
 <!--Bootstrap-->
 <script src="/js/bootstrap.min.js"></script>
