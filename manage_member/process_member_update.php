@@ -6,7 +6,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 // 로그인 없이 접근한 경우
-if (!isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
+if (!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '') {
     exit(header('Location: /index.php?msg=Wrong_approach'));
 }
 
