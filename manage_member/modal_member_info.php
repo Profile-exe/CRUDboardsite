@@ -6,7 +6,8 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 // CORS 허용
- header("Access-Control-Allow-Origin: http://localhost:63342");
+header("Access-Control-Allow-Origin: http://localhost:63342");
+header("Access-Control-Allow-Credentials: true");
 
 // 로그인이 안되어있으면 에러 모달 표시
 if (!isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
@@ -36,10 +37,10 @@ $info = array(
 echo "
     <div class='modal-header d-flex justify-content-between'>
         <h5 class='modal-title' id='exampleModalLabel'>내 정보</h5>
-        <a href='manage_member/process_member_delete.php' class='btn btn-outline-danger'>탈퇴</a>
+        <a href='/manage_member/process_member_delete.php' class='btn btn-outline-danger'>탈퇴</a>
     </div>
     <div class='modal-body'>
-        <form id='info' action='manage_member/process_member_update.php' method='post'>
+        <form id='info' action='/manage_member/process_member_update.php' method='post'>
         <div class='mb-3'>
             <label for='input_user_id' class='form-label'>아이디</label>
             <input type='text' class='form-control' name='user_id' id='input_user_id' value='{$info['user_id']}' placeholder='{$info['user_id']}' disabled>
