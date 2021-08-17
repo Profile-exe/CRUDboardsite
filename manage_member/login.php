@@ -10,7 +10,7 @@ if (isset($_GET['msg'])) {
 }
 
 $redirect = '/index.php';
-if (isset($_SERVER['HTTP_REFERER'])) {
+if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER'] != 'http://localhost/manage_member/register.php') {
     $redirect = $_SERVER['HTTP_REFERER'];
 }
 ?>
