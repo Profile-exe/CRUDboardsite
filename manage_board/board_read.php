@@ -18,7 +18,7 @@ $article = null;
 if ($is_integer) {  // 정수는 true 반환됨
     try {
         $sql = "
-            SELECT board_id, board_title, board_content, created, view_count, user_name, updated FROM board
+            SELECT * FROM board
             INNER JOIN user ON board.user_id = user.user_id
             WHERE board_id = :board_id;
         ";
@@ -48,7 +48,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
 
 $delete_btn = '';
 $update_btn = '';
-if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '' || $_SESSION['user_name'] != $article['user_name']) {
+if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '' || $_SESSION['user_id'] != $article['user_id']) {
     $delete_btn = '<div></div>';
     $update_btn = '<div></div>';
 } else {

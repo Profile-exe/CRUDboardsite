@@ -52,16 +52,10 @@ echo "
     </form>
     </div>
     <div class='modal-footer d-flex justify-content-between'>
-        <div class='other_info'>
-            <div class='board-count'>
-                <span style='font-weight: bold;'>Board Count</span>
-                {$info['board_count']}
+        <div class='last-login'>
+                <span style='font-weight: bold;'>Last Login |</span>
+                <span>{$info['last_login']}</span>
             </div>
-            <div class='last-login'>
-                <span style='font-weight: bold;'>Last Login</span>
-                {$info['last_login']}
-            </div>
-        </div>
         <div>
             <button form='info' type='submit' class='btn btn-primary' data-bs-dismiss='modal'>저장</button>
             <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>닫기</button>
