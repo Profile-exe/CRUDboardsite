@@ -87,6 +87,13 @@ if ($_SESSION['user_id'] != $article['user_id']) {
         </section>
     </div>
 </div>
+<!--member_info modal-->
+<div id="info_modal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
 <script src="../js/dropdown_loginout.js"></script>
 <!--Bootstrap-->
 <script src="../js/bootstrap.min.js"></script>
