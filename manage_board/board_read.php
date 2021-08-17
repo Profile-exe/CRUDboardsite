@@ -122,7 +122,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '' || $_SESSION['user
             <hr>
             <div class="board_modify_info d-flex justify-content-start mb-3">
                 <div class="last_update">
-                    <span style="font-weight: bold;">Last Update</span>
+                    <span style="font-weight: bold;">Last Update |</span>
                     <?=$article['updated']?>
                 </div>
             </div>

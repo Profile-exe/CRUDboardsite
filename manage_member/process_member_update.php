@@ -28,7 +28,7 @@ $result = DB::query($sql, array(
 ));
 
 if ($result > 0) {
-    header("Location: /index.php");
+    header('Location:'.$_POST['return_page']);
 } else {
-    header("Location: /index.php?msg=Error_occurred_while_updating_user_information");
+    header('Location:'.$_POST['return_page'].'.?msg=Error_occurred_while_updating_user_information');
 }

@@ -5,6 +5,11 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
+$redirect = '/index.php';
+if (isset($_SERVER['HTTP_REFERER'])) {
+    $redirect = $_SERVER['HTTP_REFERER'];
+}
+
 // CORS 허용
 header("Access-Control-Allow-Origin: http://localhost:63342");
 header("Access-Control-Allow-Credentials: true");
@@ -41,15 +46,16 @@ echo "
     </div>
     <div class='modal-body'>
         <form id='info' action='/manage_member/process_member_update.php' method='post'>
-        <div class='mb-3'>
-            <label for='input_user_id' class='form-label'>아이디</label>
-            <input type='text' class='form-control' name='user_id' id='input_user_id' value='{$info['user_id']}' placeholder='{$info['user_id']}' disabled>
-        </div>
-        <div class='mb-3'>
-            <label for='input_user_name' class='form-label'>이름</label>
-            <input type='text' class='form-control' name='user_name' id='input_user_name' value='{$info['user_name']}' placeholder='{$info['user_name']}'>
-        </div>
-    </form>
+            <input type='hidden' name='return_page' value='". $redirect ."'>
+            <div class='mb-3'>
+                <label for='input_user_id' class='form-label'>아이디</label>
+                <input type='text' class='form-control' name='user_id' id='input_user_id' value='{$info['user_id']}' placeholder='{$info['user_id']}' disabled>
+            </div>
+            <div class='mb-3'>
+                <label for='input_user_name' class='form-label'>이름</label>
+                <input type='text' class='form-control' name='user_name' id='input_user_name' value='{$info['user_name']}' placeholder='{$info['user_name']}'>
+            </div>
+        </form>
     </div>
     <div class='modal-footer d-flex justify-content-between'>
         <div class='last-login'>
