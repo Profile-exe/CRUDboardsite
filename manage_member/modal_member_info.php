@@ -5,6 +5,9 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
+// CORS 허용
+ header("Access-Control-Allow-Origin: http://localhost:63342");
+
 // 로그인이 안되어있으면 에러 모달 표시
 if (!isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
     exit('
