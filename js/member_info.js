@@ -9,6 +9,5 @@ document.getElementById('info_btn').addEventListener('click', () => {
         .then((modal_data) => {
             const modal_content = document.getElementsByClassName('modal-content')[0];
             modal_content.innerHTML = modal_data;
-            console.log(modal_data);
         });
 });
