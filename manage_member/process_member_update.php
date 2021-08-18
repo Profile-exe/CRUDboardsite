@@ -20,8 +20,8 @@ if (!isset($_POST['user_name']) || $_POST['user_name'] === '') {
 $sql = 'UPDATE user SET user_name = :name WHERE user_id = :id';
 
 $article = array(   // 입력 필터링
-    'id'   => $_SESSION['user_id'],
-    'name' => htmlspecialchars($_POST['user_name'])
+    'name' => htmlspecialchars($_POST['user_name']),
+    'id'   => $_SESSION['user_id']
 );
 
 $result = DB::query($sql, array(
@@ -29,8 +29,4 @@ $result = DB::query($sql, array(
     ':id'   => $article['id']
 ));
 
-if ($result > 0) {
-    header('Location:'.$_POST['return_page']);
-} else {
-    header('Location:'.$_POST['return_page'].'.?msg=Error_occurred_while_updating_user_information');
-}
+header('Location:'.$_POST['return_page']);

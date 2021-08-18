@@ -5,14 +5,13 @@ function delete_parameter($url, $key) {
     }
 
     list($url, $query) = explode('?', $url);
-//    $temp = explode('?', $query);
-//
-//    foreach ($temp as $key => $value) {
-//        if (substr($value, 0, strlen($key) + 1) == $key.'=') {
-//            unset($temp[$key]);
-//        }
-//    }
-//
-//    return $url.'?'.implode('&', $temp);
-    return $url;
+    $temp = explode('?', $query);
+
+    foreach ($temp as $key => $value) {
+        if (substr($value, 0, strlen($key) + 1) == $key.'=') {
+            unset($temp[$key]);
+        }
+    }
+
+    return $url.'?'.implode('&', $temp);
 }

@@ -39,9 +39,17 @@ if ($result) {  // 글이 존재하는 경우 출력
 
 $loginout = '';
 $write_btn = '';
+$my_boards_switch = '
+    <input type="checkbox" class="form-check-input" id="my_boards_switch" disabled>
+    <label for="my_boards_switch" class="form-check-label">내가 쓴 글</label>
+';
 if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
     $loginout = '<a id="loginout_btn" href="/manage_member/process_logout.php" class="btn btn-secondary">로그아웃</a>';
     $write_btn = '<a id="write_btn" href="/manage_board/board_create.php" class="btn btn-primary">글쓰기</a>';
+    $my_boards_switch = "
+        <input type='checkbox' class='form-check-input' id='my_boards_switch' onclick='board_filter(this, \"{$_SESSION['user_name']}\")'>
+        <label for='my_boards_switch' class='form-check-label'>내가 쓴 글</label>
+    ";
 } else {
     $loginout = '<a id="loginout_btn" href="/manage_member/login.php" class="btn btn-secondary">로그인</a>';
     $write_btn = '<button class="btn btn-primary" disabled>글쓰기</button>';
@@ -87,24 +95,31 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
         </header>
         <section>
             <div class="col-12 d-flex justify-content-between mb-3">
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-                <?=$write_btn?>
+                <div class="d-flex align-items-center">
+                    <form class="d-flex me-3">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success" type="submit">Search</button>
+                    </form>
+                    <div class="form-check form-switch">
+                        <?=$my_boards_switch?>
+                    </div>
+                </div>
+                <div>
+                    <?=$write_btn?>
+                </div>
             </div>
             <table class="table table-hover">
                 <thead class="table-light">
                 <tr>
-                    <th class="text-center" scope="col">#</th>
-                    <th scope="col">제목</th>
-                    <th class="text-center" scope="col">글쓴이</th>
-                    <th class="text-center" scope="col">작성일</th>
-                    <th class="text-center" scope="col">조회수</th>
+                    <th class="col-1 text-center" scope="col">#</th>
+                    <th class="col-7" scope="col">제목</th>
+                    <th class="col-1 text-center" scope="col">글쓴이</th>
+                    <th class="col-2 text-center" scope="col">작성일</th>
+                    <th class="col-1 text-center" scope="col">조회수</th>
                 </tr>
                 </thead>
-                <tbody>
-                <?=$topic_list?>
+                <tbody id="board_list" >
+                    <?=$topic_list?>
                 </tbody>
             </table>
         </section>
@@ -117,6 +132,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
         </div>
     </div>
 </div>
+<script src="/js/my_board_list.js"></script>
 <script src="/js/member_info.js"></script>
 <script src="/js/dropdown_loginout.js"></script>
 <!--Bootstrap-->
