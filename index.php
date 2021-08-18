@@ -78,7 +78,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
                             </button>
                             <ul class="dropdown-menu">
                                 <li><button id="info_btn" class="dropdown-item" data-bs-toggle="modal" data-bs-target="#info_modal">내 정보</button></li>
-                                <li><a class="dropdown-item" href="/manage_board/board_list.php">내가 쓴 글</a></li>
                             </ul>
                         </div>
                         <?=$loginout?>
