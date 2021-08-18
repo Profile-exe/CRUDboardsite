@@ -1,4 +1,6 @@
 <?php
+require_once '../lib/delete_parameter.php';
+
 // 세션 시작
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -11,8 +13,10 @@ if (isset($_GET['msg'])) {
 
 $redirect = '/index.php';
 if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER'] != 'http://localhost/manage_member/register.php') {
+    $_SERVER['HTTP_REFERER'] = delete_parameter($_SERVER['HTTP_REFERER'], 'msg');
     $redirect = $_SERVER['HTTP_REFERER'];
 }
+
 ?>
 
 <!doctype html>

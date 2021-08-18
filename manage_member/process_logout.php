@@ -1,4 +1,5 @@
 <?php
+require_once '../lib/delete_parameter.php';
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -11,6 +12,7 @@ if (isset($_SESSION['user_id'])) {
 
 $redirect = '/index.php';
 if (isset($_SERVER['HTTP_REFERER'])) {
+    $_SERVER['HTTP_REFERER'] = delete_parameter($_SERVER['HTTP_REFERER'], 'msg');
     $redirect = $_SERVER['HTTP_REFERER'];
 }
 
