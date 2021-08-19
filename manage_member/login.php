@@ -13,8 +13,8 @@ if (isset($_GET['msg'])) {
 
 $redirect = '/index.php';
 if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER'] != 'http://localhost/manage_member/register.php') {
-    $_SERVER['HTTP_REFERER'] = delete_parameter($_SERVER['HTTP_REFERER'], 'msg');
-    $redirect = $_SERVER['HTTP_REFERER'];
+    $redirect = delete_parameter($_SERVER['HTTP_REFERER'], 'msg');
+    var_dump($redirect);
 }
 
 ?>
