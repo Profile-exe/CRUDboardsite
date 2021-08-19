@@ -127,8 +127,8 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '' || $_SESSION['user
                         <?=$article['user_name']?>
                     </div>
                     <div class="created">
-                        <span style="font-weight: bold;">Created / View |</span>
-                        <?=$article['created']?> / <?=$article['view_count']?>
+                        <span style="font-weight: bold;">View / Created |</span>
+                        <?=$article['view_count']?> / <?=$article['created']?>
                     </div>
                 </div>
             </section>
