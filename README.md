@@ -28,6 +28,7 @@ ___
 - [Ajax, fetch API](https://velog.io/@haileyself/TIL-Ajax-fetch-promise-uak0t7wne7)
 - [SQL Visualizer](https://sql-joins.leopard.in.ua/)
 - [DB Design](https://transferhwang.tistory.com/41)
+- [Semantic Tag](https://www.youtube.com/watch?v=T7h8O7dpJIg)
 ___
 
 ## [TODO](./Todo.md)
