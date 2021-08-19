@@ -32,6 +32,29 @@ if ($is_integer) {  // 정수는 true 반환됨
         }
 
         $article = $result[0];
+
+        $is_count = true;
+        if (!isset($_COOKIE["board_{$board_id}"])) {
+            setcookie("board_{$board_id}", $board_id, time() + 60);
+        } else {
+            $is_count = false;
+        }
+
+        if ($is_count) {
+            $sql = "
+                UPDATE board SET
+                    view_count = view_count + 1
+                WHERE board_id = :id
+            ";
+
+            $result = DB::query($sql, array(
+                ':id' => $board_id
+            ));
+
+            if ($result == 0) {    // UPDATE는 변경된 row의 개수 반환
+                exit(header('Location: /index.php?msg=Wrong_board_ID'));
+            }
+        }
     } catch (Exception $e) {
         exit(header('Location: /index.php?msg=Error_occurred_while_reading_board'));
     }
