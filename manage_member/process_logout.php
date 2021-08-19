@@ -13,7 +13,6 @@ if (isset($_SESSION['user_id'])) {
 $redirect = '/index.php';
 if (isset($_SERVER['HTTP_REFERER'])) {
     $redirect = delete_parameter($_SERVER['HTTP_REFERER'], 'msg');
-    var_dump($redirect);
 }
 
 header('Location: '.$redirect);
