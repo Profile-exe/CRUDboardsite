@@ -33,11 +33,10 @@ if ($is_integer) {  // 정수는 true 반환됨
 
         $article = $result[0];
 
-        $is_count = true;
-        if (!isset($_COOKIE["board_{$board_id}"])) {
+        $is_count = false;
+        if (!isset($_COOKIE["board_{$board_id}"])) {    // 쿠키가 없는 경우 생성 후 조회수 증가
             setcookie("board_{$board_id}", $board_id, time() + 60 * 60 * 24);
-        } else {
-            $is_count = false;
+            $is_count = true;
         }
 
         if ($is_count) {
