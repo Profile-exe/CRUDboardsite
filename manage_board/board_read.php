@@ -35,7 +35,7 @@ if ($is_integer) {  // 정수는 true 반환됨
 
         $is_count = true;
         if (!isset($_COOKIE["board_{$board_id}"])) {
-            setcookie("board_{$board_id}", $board_id, time() + 60);
+            setcookie("board_{$board_id}", $board_id, time() + 60 * 60 * 24);
         } else {
             $is_count = false;
         }
