@@ -117,46 +117,45 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '' || $_SESSION['user
                 </div>
             </nav>
         </header>
-        <section>
-            <div class="borard_header">
-                <div class="board_id" style="font-size:2em; color:gray;">
-                    # <?=$article['board_id']?>
+        <article>
+            <section class="borard_header">
+                <div class="board_id mb-3 d-flex justify-content-between align-items-baseline">
+                    <span style="font-size:2em; color:gray;"># <?=$article['board_id']?> - <?=$article['board_title']?></span>
                 </div>
-                <div class="d-flex justify-content-between">
-                    <div class="board_title d-flex align-items-end" style="font-size:1.7em; color:black;">
-                        <?=$article['board_title']?>
+                <div class="board_info d-flex justify-content-between align-items-center">
+                    <div class="author_name">
+                        <span style="font-weight: bold;">Author |</span>
+                        <?=$article['user_name']?>
                     </div>
-                    <div class="board_info">
-                        <div class="author_name" style="font-weight:bold;">
-                            <?=$article['user_name']?>
-                        </div>
-                        <div class="created">
-                            <?=$article['created']?>
-                        </div>
+                    <div class="created">
+                        <span style="font-weight: bold;">Created / View |</span>
+                        <?=$article['created']?> / <?=$article['view_count']?>
                     </div>
                 </div>
-                <hr>
-            </div>
-            <div class="board_body mb-5">
+            </section>
+            <hr>
+            <section class="board_body mb-5">
                 <div class="board_content" style="font-size:1.2em; color:black;">
                     <?=$article['board_content']?>
                 </div>
-            </div>
+            </section>
             <hr>
-            <div class="board_modify_info d-flex justify-content-start mb-3">
-                <div class="last_update">
-                    <span style="font-weight: bold;">Last Update |</span>
-                    <?=$article['updated']?>
+            <section class="board_footer">
+                <div class="board_modify_info d-flex justify-content-start mb-3">
+                    <div class="last_update">
+                        <span style="font-weight: bold;">Last Update |</span>
+                        <?=$article['updated']?>
+                    </div>
                 </div>
-            </div>
-            <div class="d-flex justify-content-between">
-                <div>
-                    <?=$update_btn?>
-                    <?=$delete_btn?>
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <?=$update_btn?>
+                        <?=$delete_btn?>
+                    </div>
+                    <a href="/index.php" class="btn btn-outline-secondary">돌아가기</a>
                 </div>
-                <a href="/index.php" class="btn btn-outline-secondary">돌아가기</a>
-            </div>
-        </section>
+            </section>
+        </article>
     </div>
 </div>
 <!--member_info modal-->
