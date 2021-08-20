@@ -1,5 +1,5 @@
 <?php
-require_once '../db.class.php';
+require_once '../classes/db.class.php';
 
 // 로그인체크
 if(session_status() == PHP_SESSION_NONE) {

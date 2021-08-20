@@ -1,5 +1,5 @@
 <?php
-require_once '../db.class.php';
+require_once '../classes/db.class.php';
 
 $post_data = json_decode(file_get_contents('php://input'));
 

@@ -1,5 +1,5 @@
 <?php
-require_once '../db.class.php';
+require_once '../classes/db.class.php';
 
 if (isset($_POST['id']) && isset($_POST['password']) && isset($_POST['name'])) {
     $id = $_POST['id'];

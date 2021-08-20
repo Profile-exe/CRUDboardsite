@@ -27,7 +27,7 @@ class DB{
         $statement->execute($params);
         $errorinfo = $statement->errorInfo();
 
-        $query = trim($query);  // 맨 끝 공백 제거
+        $query = trim($query);  // 양쪽 끝 공백 제거
         if(trim(explode(' ', $query)[0]) == "SELECT") { // "SELECT " 이러면 인식 안되므로 한번 더 trim
             return $statement->fetchAll();
         } else {
