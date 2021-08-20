@@ -21,7 +21,7 @@ $sql = "
 $sql .= $my_board;
 
 // 게시글 줄 수, 블럭 수
-$pagination = new Pagination(5, 5, $post_data->page_num, $my_board);
+$pagination = new Pagination($post_data->page_count, 5, $post_data->page_num, $my_board);
 
 // 페이지네이션을 위한 LIMIT
 $sql .= trim("    

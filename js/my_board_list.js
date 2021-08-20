@@ -6,6 +6,7 @@ if (page === null) page = '1';
 
 const body = {
     id: '',
+    page_count: 10,
     page_num: page,
     is_my_board: false
 }
@@ -46,7 +47,6 @@ function get_board_list(body) {
     fetch('/manage_board/process_board_list.php', init)
         .then((res) => res.text())
         .then((data) => {
-            console.log(data);
             const response_obj = JSON.parse(data);
             document.getElementById('board_list').innerHTML = response_obj[0];
             document.getElementById('page-list').innerHTML = response_obj[1];
