@@ -2,7 +2,7 @@
 // connect to database
 $pdo = DB::connect();
 
-class DB{
+class DB {
 
     public static function connect() {
         // database server information

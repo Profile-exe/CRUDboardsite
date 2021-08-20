@@ -1,5 +1,6 @@
 <?php
-require_once '../classes/db.class.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/classes/db.class.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/lib/delete_parameter.php';
 
 if(session_status() == PHP_SESSION_NONE) {
     session_start();
@@ -8,6 +9,11 @@ if(session_status() == PHP_SESSION_NONE) {
 // 메시지 전달 시 알림
 if (isset($_GET['msg'])) {
     echo '<script>alert("'.$_GET['msg'].'");</script>';
+}
+
+$redirect = '/index.php';
+if (isset($_SERVER['HTTP_REFERER']) && $_SERVER['HTTP_REFERER'] != 'http://localhost/manage_member/register.php') {
+    $redirect = delete_parameter($_SERVER['HTTP_REFERER'], 'msg');
 }
 
 $board_id = $_GET['id'];
@@ -151,7 +157,7 @@ if(!isset($_SESSION['user_id']) || $_SESSION['user_id'] == '' || $_SESSION['user
                         <?=$update_btn?>
                         <?=$delete_btn?>
                     </div>
-                    <a href="/index.php" class="btn btn-outline-secondary">돌아가기</a>
+                    <a href="<?=$redirect?>" class="btn btn-outline-secondary">돌아가기</a>
                 </div>
             </section>
         </article>
