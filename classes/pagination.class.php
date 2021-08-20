@@ -27,17 +27,17 @@ class Pagination {
         $page_set;
 
     //페이지 줄수, 블럭수 받아 데이터 정리
-    public function __construct($page_count, $block_count) {
+    public function __construct($page_count, $block_count, $page_num, $is_my_board) {
         $block_set      = $block_count; // 한페이지 블럭수
         $this->page_set = $page_count;  // 한페이지 줄수
 
-        $result = DB::query('SELECT count(board_id) AS total FROM board')[0];
+        $result = DB::query("SELECT count(board_id) AS total FROM board {$is_my_board}")[0];
         $total = $result['total']; // 전체글수
 
         $this->total_page  = ceil($total / $this->page_set);        // 총페이지수(올림함수)
         $this->total_block = ceil($this->total_page / $block_set);  // 총블럭수(올림함수)
 
-        $this->page = $_GET['page'] ?? 1;                // parameter로 현재 페이지정보를 받아옴
+        $this->page = $page_num;                         // parameter로 현재 페이지정보를 받아옴
         $block = ceil($this->page / $block_set);    // 현재블럭(올림함수)
         $this->limit_idx = ($this->page - 1) * $this->page_set; // limit 시작위치
 
@@ -60,7 +60,7 @@ class Pagination {
     }
 
     //하단 페이지 넘버링
-    public function BottomPageNumber(){
+    public function BottomPageNumber(): string {
         $this->page_nav .= ($this->prev_page > 0) ?
             "<li class='page-item'><a class='page-link' href='$this->PHP_SELF?page=$this->prev_page'>Prev</a></li>" :
             "<li class='page-item disabled'><span class='page-link'>Prev</span></li>";
@@ -69,7 +69,7 @@ class Pagination {
             "<li class='page-item'><a class='page-link' href='$this->PHP_SELF?page=$this->prev_block_page'>...</a></li>" :
             "<li class='page-item disabled'><span class='page-link'>...</span></li>";
 
-        for ($i=$this->first_page; $i<=$this->last_page; $i++) {
+        for ($i = $this->first_page; $i <= $this->last_page; $i++) {
             $this->page_nav .= ($i != $this->page) ?
                 "<li class='page-item'><a class='page-link' href='$this->PHP_SELF?page=$i'>$i</a></li>" :
                 "<li class='page-item disabled'><span class='page-link'>$i</span></li>";
@@ -83,9 +83,9 @@ class Pagination {
             "<li class='page-item'><a class='page-link' href='$this->PHP_SELF?page=$this->next_page'>Next</a></li>" :
             "<li class='page-item disabled'><span class='page-link'>Next</span></li>";
 
-        echo $this->page_nav;
-
         // 페이지 파라미터 중복 제거
         $this->PHP_SELF = delete_parameter($this->PHP_SELF, 'page');
+
+        return $this->page_nav;
     }
 }

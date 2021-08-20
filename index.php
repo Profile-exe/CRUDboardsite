@@ -12,34 +12,7 @@ if (isset($_GET['msg'])) {
     echo '<script>alert("'.$_GET['msg'].'");</script>';
 }
 
-// 게시글 줄 수, 블럭 수
-$pagination = new Pagination(4, 5);
-
-$sql = "
-    SELECT
-        board_id, board_title, user_name, date_format(created, '%m-%d %H:%i') as created, view_count 
-    FROM board INNER JOIN user
-    ON board.user_id = user.user_id
-    ORDER BY created DESC
-    LIMIT {$pagination->limit_idx}, {$pagination->page_set} 
-";
-
-$result = DB::query($sql);
-
-$topic_list = '';
-if ($result) {  // 글이 존재하는 경우 출력
-    foreach ($result as $index => $row) {
-        $topic_list .= "
-            <tr style='cursor:pointer' onclick='location.href=\"/manage_board/board_read.php?id={$row['board_id']}\"'>
-                <th class='col-1 text-center' scope='row'>{$row['board_id']}</th>
-                <td class='col-7'>{$row['board_title']}</td>
-                <td class='col-1 text-center'>{$row['user_name']}</td>
-                <td class='col-2 text-center'>{$row['created']}</td>
-                <td class='col-1 text-center'>{$row['view_count']}</td>
-            </tr>
-        ";
-    }
-}
+$page_num = $_GET['page'] ?? 1; // 페이지 번호가 없는 경우 1로 설정
 
 $loginout = '';
 $write_btn = '';
@@ -51,7 +24,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
     $loginout = '<a id="loginout_btn" href="/manage_member/process_logout.php" class="btn btn-secondary">로그아웃</a>';
     $write_btn = '<a id="write_btn" href="/manage_board/board_create.php" class="btn btn-primary">글쓰기</a>';
     $my_boards_switch = "
-        <input type='checkbox' class='form-check-input' id='my_boards_switch' onclick='board_filter(this, \"{$_SESSION['user_name']}\")'>
+        <input type='checkbox' value='\"{$_SESSION['user_id']}\"' class='form-check-input' id='my_boards_switch'>
         <label for='my_boards_switch' class='form-check-label'>내가 쓴 글</label>
     ";
 } else {
@@ -123,14 +96,12 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
                 </tr>
                 </thead>
                 <tbody id="board_list" >
-                    <?=$topic_list?>
                 </tbody>
             </table>
         </section>
         <footer class="mt-5">
             <nav id="nav-pagination" class="position-absolute bottom-0 start-50 translate-middle">
-                <ul class="pagination d-flex justify-content-center">
-                    <?php $pagination->BottomPageNumber() ?>
+                <ul id="page-list" class="pagination d-flex justify-content-center">
                 </ul>
             </nav>
         </footer>
@@ -143,6 +114,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
         </div>
     </div>
 </main>
+
+<script src="/js/manage_cookie.js"></script>
 <script src="/js/my_board_list.js"></script>
 <script src="/js/member_info.js"></script>
 <script src="/js/dropdown_loginout.js"></script>
