@@ -1,5 +1,6 @@
 <?php
-require_once 'classes/db.class.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/classes/db.class.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/classes/pagination.class.php';
 
 // 세션 시작
 if (session_status() == PHP_SESSION_NONE) {
@@ -11,8 +12,8 @@ if (isset($_GET['msg'])) {
     echo '<script>alert("'.$_GET['msg'].'");</script>';
 }
 
-// Null coalescing operator
-$page = $_GET['page'] ?? 1;
+// 게시글 줄 수, 블럭 수
+$pagination = new Pagination(4, 5);
 
 $sql = "
     SELECT
@@ -20,7 +21,7 @@ $sql = "
     FROM board INNER JOIN user
     ON board.user_id = user.user_id
     ORDER BY created DESC
-    LIMIT 1000
+    LIMIT {$pagination->limit_idx}, {$pagination->page_set} 
 ";
 
 $result = DB::query($sql);
@@ -75,8 +76,8 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-<div class="container my-3 d-flex justify-content-center">
-    <div class="col-10">
+<main class="container my-3 d-flex justify-content-center">
+    <article class="col-10">
         <header class="my-4">
             <nav class="navbar navbar-light">
                 <div class="container-fluid px-0 d-flex justify-content-between">
@@ -126,7 +127,14 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
                 </tbody>
             </table>
         </section>
-    </div>
+        <footer class="mt-5">
+            <nav id="nav-pagination" class="position-absolute bottom-0 start-50 translate-middle">
+                <ul class="pagination d-flex justify-content-center">
+                    <?php $pagination->BottomPageNumber() ?>
+                </ul>
+            </nav>
+        </footer>
+    </article>
     <!--member_info modal-->
     <div id="info_modal" class="modal fade">
         <div class="modal-dialog">
@@ -134,7 +142,7 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
             </div>
         </div>
     </div>
-</div>
+</main>
 <script src="/js/my_board_list.js"></script>
 <script src="/js/member_info.js"></script>
 <script src="/js/dropdown_loginout.js"></script>
