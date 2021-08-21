@@ -32,3 +32,9 @@ ___
 ___
 
 ## [TODO](./Todo.md)
+
+___
+
+## My blog
+
+### [velog.io - profile-exe](https://velog.io/@profile_exe)
