@@ -14,12 +14,13 @@ if (isset($_GET['msg'])) {
 
 $page_num = $_GET['page'] ?? 1; // 페이지 번호가 없는 경우 1로 설정
 
-$loginout = '';
-$write_btn = '';
+$loginout = '<a id="loginout_btn" href="/manage_member/login.php" class="btn btn-secondary">로그인</a>';
+$write_btn = '<button class="btn btn-primary" disabled>글쓰기</button>';
 $my_boards_switch = '
     <input type="checkbox" class="form-check-input" id="my_boards_switch" disabled>
     <label for="my_boards_switch" class="form-check-label">내가 쓴 글</label>
 ';
+
 if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
     $loginout = '<a id="loginout_btn" href="/manage_member/process_logout.php" class="btn btn-secondary">로그아웃</a>';
     $write_btn = '<a id="write_btn" href="/manage_board/board_create.php" class="btn btn-primary">글쓰기</a>';
@@ -27,9 +28,6 @@ if (isset($_SESSION['user_id']) && $_SESSION['user_id'] != '') {
         <input type='checkbox' value='\"{$_SESSION['user_id']}\"' class='form-check-input' id='my_boards_switch'>
         <label for='my_boards_switch' class='form-check-label'>내가 쓴 글</label>
     ";
-} else {
-    $loginout = '<a id="loginout_btn" href="/manage_member/login.php" class="btn btn-secondary">로그인</a>';
-    $write_btn = '<button class="btn btn-primary" disabled>글쓰기</button>';
 }
 
 ?>

@@ -1,5 +1,5 @@
 <?php
-require_once 'db.class.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/classes/db.class.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/lib/delete_parameter.php';
 
 class Pagination {
