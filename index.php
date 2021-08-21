@@ -12,8 +12,6 @@ if (isset($_GET['msg'])) {
     echo '<script>alert("'.$_GET['msg'].'");</script>';
 }
 
-$page_num = $_GET['page'] ?? 1; // 페이지 번호가 없는 경우 1로 설정
-
 $loginout = '<a id="loginout_btn" href="/manage_member/login.php" class="btn btn-secondary">로그인</a>';
 $write_btn = '<button class="btn btn-primary" disabled>글쓰기</button>';
 $my_boards_switch = '
