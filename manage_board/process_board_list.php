@@ -47,6 +47,8 @@ if ($result) {  // 글이 존재하는 경우 table-row로 생성
     }
 }
 // table-row랑 pagenation의 nav를 반환할 것임
-$response = array($topic_list, $pagination->BottomPageNumber());
+$response = array(
+    'topic_list' => $topic_list,
+    'page_nav'   => $pagination->BottomPageNumber());
 
 echo json_encode($response);    // JSON으로 encoding 후 반환

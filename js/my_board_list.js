@@ -48,8 +48,8 @@ function get_board_list(body) { // AJAX 이용
         .then((res) => res.text())
         .then((data) => {
             const response_obj = JSON.parse(data);  // JSON 형태로 응답받고 parsing 후 사용
-            document.getElementById('board_list').innerHTML = response_obj[0];
-            document.getElementById('page-list').innerHTML = response_obj[1];
+            document.getElementById('board_list').innerHTML = response_obj['topic_list'];
+            document.getElementById('page-list').innerHTML = response_obj['page_nav'];
         });
 }
 
