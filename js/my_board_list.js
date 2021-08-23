@@ -45,11 +45,10 @@ function get_board_list(body) { // AJAX 이용
     }
 
     fetch('/manage_board/process_board_list.php', init)
-        .then((res) => res.text())
+        .then((res) => res.json())    // JSON 형태로 응답받고 parsing 후 사용
         .then((data) => {
-            const response_obj = JSON.parse(data);  // JSON 형태로 응답받고 parsing 후 사용
-            document.getElementById('board_list').innerHTML = response_obj['topic_list'];
-            document.getElementById('page-list').innerHTML = response_obj['page_nav'];
+            document.getElementById('board_list').innerHTML = data['topic_list'];
+            document.getElementById('page-list').innerHTML = data['page_nav'];
         });
 }
 
